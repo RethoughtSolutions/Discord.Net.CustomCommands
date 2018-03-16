@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package  xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>    
+    <id>Discord.Net.CustomCommands</id>
+    <version>1.0.0</version>
+    <authors>RethoughtSolutions</authors>
+    <description>Discord.Net.CustomCommands allows for natural language for commands</description>
+    <dependencies>
+      <dependency id="Discord.Net" version="2.0.0-beta"  />
+      <dependency id="Wit.Ai.NET" version="1.0.0"  />
+    </dependencies>
+  </metadata>
+</package>

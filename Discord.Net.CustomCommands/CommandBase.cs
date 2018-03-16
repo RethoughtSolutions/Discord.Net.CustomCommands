@@ -11,10 +11,6 @@ namespace Discord.Net.CustomCommands
 
         protected Func<TContext, Task> CurriedFunc;
 
-        private readonly IList<string> internalList = new List<string>();
-
-        public IReadOnlyList<string> Aliases => internalList.ToImmutableList();
-
         public string Description { get; set; }
 
         public string Intent { get; }
@@ -23,17 +19,6 @@ namespace Discord.Net.CustomCommands
         {
             Type = type;
             Intent = intent;
-        }
-
-        public void AddAlias(string alias)
-        {
-            internalList.Add(alias);
-        }
-
-        public void AddAliases(IEnumerable<string> aliases)
-        {
-            foreach (var alias in aliases)
-                AddAlias(alias);
         }
 
         public async Task Execute(TContext context)

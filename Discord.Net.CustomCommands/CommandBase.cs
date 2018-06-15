@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Discord.Net.CustomCommands
@@ -9,7 +10,7 @@ namespace Discord.Net.CustomCommands
     {
         protected readonly Type Type;
 
-        protected Func<TContext, Task> CurriedFunc;
+        protected Func<TContext, CancellationToken, Task> CurriedFunc;
 
         public string Description { get; set; }
 
@@ -21,9 +22,9 @@ namespace Discord.Net.CustomCommands
             Intent = intent;
         }
 
-        public async Task Execute(TContext context)
+        public async Task Execute(TContext context, CancellationToken cancellationToken)
         {
-            await CurriedFunc.Invoke(context);
+            await CurriedFunc.Invoke(context, cancellationToken);
         }
     }
 }

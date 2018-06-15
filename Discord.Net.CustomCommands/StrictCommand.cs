@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Discord.Net.CustomCommands
@@ -36,7 +37,8 @@ namespace Discord.Net.CustomCommands
 
         public void SetFunc(Func<T, DiscordContext, Task> func)
         {
-            async Task Func(DiscordContext context)
+            // TODO use cancellationToken
+            async Task Func(DiscordContext context, CancellationToken cancellationToken)
             {
                 var inputs = inputResolver.Resolve(context.Message.Content);
 

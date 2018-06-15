@@ -48,7 +48,7 @@
 //            //// TODO: Algorithm that decides which command to execute if both resolve algorithms return a result
 //            //if (TryResolveStrictCommand(userMessage.Content, out var strictCommand))
 //            //{
-//            //    await strictCommand.Execute(contextFactory.Create(userMessage));
+//            //    await strictCommand.ExecuteAsync(contextFactory.Create(userMessage));
 //            //    return;
 //            //}
 //        }

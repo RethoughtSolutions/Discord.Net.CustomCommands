@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Discord.Net.CustomCommands
@@ -7,6 +8,6 @@ namespace Discord.Net.CustomCommands
     {
         void AddCommand(CommandBase<TContext> commandBase);
         void AddCommands(IEnumerable<CommandBase<TContext>> commandBases);
-        Task ExecuteCommandAsync(IUserMessage userMessage);
+        Task ExecuteCommandAsync(IUserMessage userMessage, CancellationToken cancellationToken);
     }
 }

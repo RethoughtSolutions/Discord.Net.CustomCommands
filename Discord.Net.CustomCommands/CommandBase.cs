@@ -22,7 +22,7 @@ namespace Discord.Net.CustomCommands
             Intent = intent;
         }
 
-        public async Task Execute(TContext context, CancellationToken cancellationToken)
+        public async Task ExecuteAsync(TContext context, CancellationToken cancellationToken)
         {
             await CurriedFunc.Invoke(context, cancellationToken);
         }

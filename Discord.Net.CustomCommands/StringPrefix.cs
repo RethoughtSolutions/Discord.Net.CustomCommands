@@ -2,15 +2,16 @@
 {
     public class StringPrefix : IPrefix
     {
-        private readonly string value;
-
         public StringPrefix(string value)
         {
-            this.value = value;
+            Value = value;
         }
+
         public bool Valid(string input)
         {
-            return input.Equals(value);
+            return input.Equals(Value);
         }
+
+        public string Value { get; }
     }
 }

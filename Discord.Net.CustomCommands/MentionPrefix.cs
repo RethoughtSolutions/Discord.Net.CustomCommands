@@ -12,5 +12,7 @@
         {
             return MentionUtils.TryParseUser(input, out var id) && id == user.Id;
         }
+
+        public string Value => user.Mention;
     }
 }

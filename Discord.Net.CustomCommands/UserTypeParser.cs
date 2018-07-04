@@ -3,30 +3,28 @@ using System.Threading.Tasks;
 
 namespace Discord.Net.CustomCommands
 {
+    // TODO Apply Option-Pattern
     public class UserTypeParser
     {
         public async Task<IGuildUser> DirectParseAsync(IGuild guild, string input)
         {
-            IGuildUser result = null;
-
-            result = await ParseByMention(guild, input);
+            var result = await ParseByMention(guild, input).ConfigureAwait(false);
 
             if (result != null) return result;
 
             if (ulong.TryParse(input, out var id))
             {
-                result = await ParseById(guild, id);
+                result = await ParseById(guild, id).ConfigureAwait(false);
+
                 if (result != null) return result;
 
+                return await ParseByUsername(guild, input).ConfigureAwait(false);
             }
 
-
-            result = await ParseByUsername(guild, input);
-
-            return result;
+            return await ParseByUsername(guild, input).ConfigureAwait(false);
         }
 
-        private async Task<IGuildUser> ParseByMention(IGuild guild, string input)
+        private static async Task<IGuildUser> ParseByMention(IGuild guild, string input)
         {
             if (MentionUtils.TryParseUser(input, out var id))
             {
@@ -36,12 +34,12 @@ namespace Discord.Net.CustomCommands
             return null;
         }
 
-        private async Task<IGuildUser> ParseById(IGuild guild, ulong input)
+        private static async Task<IGuildUser> ParseById(IGuild guild, ulong input)
         {
             return await guild.GetUserAsync(input);
         }
 
-        private async Task<IGuildUser> ParseByUsername(IGuild guild, string input)
+        private static async Task<IGuildUser> ParseByUsername(IGuild guild, string input)
         {
             var users = await guild.GetUsersAsync();
 

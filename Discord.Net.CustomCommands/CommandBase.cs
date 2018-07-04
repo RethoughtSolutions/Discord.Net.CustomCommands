@@ -12,8 +12,6 @@ namespace Discord.Net.CustomCommands
 
         protected Func<TContext, CancellationToken, Task> CurriedFunc;
 
-        public string Description { get; set; }
-
         public string Intent { get; }
 
         protected CommandBase(Type type, string intent)

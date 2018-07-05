@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Discord.Net.CustomCommands.Prefix
 {
@@ -20,20 +19,5 @@ namespace Discord.Net.CustomCommands.Prefix
         }
 
         public override string Value => user.Mention;
-    }
-
-    public abstract class RemovePrefixBase : IPrefix
-    {
-        public abstract bool HasPrefix(string input);
-
-        public virtual string Remove(string input)
-        {
-            var index = input.IndexOf(Value, StringComparison.Ordinal);
-            return index < 0
-                ? throw new InvalidOperationException("Input doesn't contain prefix")
-                : input.Remove(index, Value.Length);
-        }
-
-        public abstract string Value { get; }
     }
 }

@@ -15,7 +15,7 @@
 
         public IUser User { get; }
 
-        internal DiscordContext(IDiscordClient client, IUserMessage msg)
+        protected internal DiscordContext(IDiscordClient client, IUserMessage msg)
         {
             Client = client;
             Guild = (msg.Channel as IGuildChannel)?.Guild;

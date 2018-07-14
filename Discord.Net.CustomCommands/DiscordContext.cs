@@ -1,5 +1,6 @@
 ﻿namespace Discord.Net.CustomCommands
 {
+    // TODO Generalize Context for different Chat Applications
     public class DiscordContext
     {
         public IMessageChannel Channel { get; }
@@ -9,7 +10,7 @@
         public IGuild Guild { get; }
 
         // Kind of out of place here
-        public bool IsPrivate => Channel is IPrivateChannel;
+        public bool IsPrivateChannel => Channel is IPrivateChannel;
 
         public IUserMessage Message { get; }
 

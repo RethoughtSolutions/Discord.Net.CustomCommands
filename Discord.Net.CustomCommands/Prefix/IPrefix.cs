@@ -5,8 +5,6 @@
         bool HasPrefix(string input);
 
         string Remove(string input);
-
-        string Value { get; }
     }
 
 }

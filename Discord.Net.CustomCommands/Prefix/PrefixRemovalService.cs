@@ -5,7 +5,7 @@ using Optional.Collections;
 
 namespace Discord.Net.CustomCommands.Prefix
 {
-    public class PrefixRemovalService<T> : IPrefixRemovalService
+    public class PrefixRemovalService : IPrefixRemovalService
     {
         private readonly IPrefixRepository prefixRepository;
 

@@ -2,7 +2,7 @@
 
 namespace Discord.Net.CustomCommands.Prefix
 {
-    public class MentionPrefix : RemovePrefixBase
+    public class MentionPrefix : PrefixBase
     {
         private readonly IUser user;
 

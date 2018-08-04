@@ -2,7 +2,7 @@
 
 namespace Discord.Net.CustomCommands.Prefix
 {
-    public abstract class RemovePrefixBase : IPrefix
+    public abstract class PrefixBase : IPrefix
     {
         public abstract string Value { get; }
         public abstract bool HasPrefix(string input);

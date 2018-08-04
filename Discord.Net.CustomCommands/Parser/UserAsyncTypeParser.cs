@@ -8,24 +8,24 @@ namespace Discord.Net.CustomCommands.Parser
     {
         public async Task<Option<IGuildUser>> ParseAsync(UserTypeParserInput input)
         {
-            var result = await ParseByMention(input.Guild, input.Username).ConfigureAwait(false);
+            var result = await ParseByMentionAsync(input.Guild, input.Username).ConfigureAwait(false);
 
             if (result != null) return Option.None<IGuildUser>();
 
             if (ulong.TryParse(input.Username, out var id))
             {
-                result = await ParseById(input.Guild, id).ConfigureAwait(false);
+                result = await ParseByIdAsync(input.Guild, id).ConfigureAwait(false);
 
                 if (result != null) return result.Some();
 
-                return (await ParseByUsername(input.Guild, input.Username).ConfigureAwait(false)).Some();
+                return (await ParseByUsernameAsync(input.Guild, input.Username).ConfigureAwait(false)).Some();
             }
 
-            return (await ParseByUsername(input.Guild, input.Username).ConfigureAwait(false)).Some();
+            return (await ParseByUsernameAsync(input.Guild, input.Username).ConfigureAwait(false)).Some();
         }
 
         // TODO Apply Option Pattern
-        private static async Task<IGuildUser> ParseByMention(IGuild guild, string input)
+        private static async Task<IGuildUser> ParseByMentionAsync(IGuild guild, string input)
         {
             if (MentionUtils.TryParseUser(input, out var id))
             {
@@ -36,13 +36,13 @@ namespace Discord.Net.CustomCommands.Parser
         }
 
         // TODO Apply Option Pattern
-        private static Task<IGuildUser> ParseById(IGuild guild, ulong input)
+        private static Task<IGuildUser> ParseByIdAsync(IGuild guild, ulong input)
         {
             return guild.GetUserAsync(input);
         }
 
         // TODO Apply Option Pattern
-        private static async Task<IGuildUser> ParseByUsername(IGuild guild, string input)
+        private static async Task<IGuildUser> ParseByUsernameAsync(IGuild guild, string input)
         {
             var users = await guild.GetUsersAsync().ConfigureAwait(false);
 

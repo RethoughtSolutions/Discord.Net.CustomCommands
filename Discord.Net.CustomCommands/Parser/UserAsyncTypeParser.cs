@@ -36,15 +36,15 @@ namespace Discord.Net.CustomCommands.Parser
         }
 
         // TODO Apply Option Pattern
-        private static async Task<IGuildUser> ParseById(IGuild guild, ulong input)
+        private static Task<IGuildUser> ParseById(IGuild guild, ulong input)
         {
-            return await guild.GetUserAsync(input);
+            return guild.GetUserAsync(input);
         }
 
         // TODO Apply Option Pattern
         private static async Task<IGuildUser> ParseByUsername(IGuild guild, string input)
         {
-            var users = await guild.GetUsersAsync();
+            var users = await guild.GetUsersAsync().ConfigureAwait(false);
 
             return users.FirstOrDefault(x => x.Username == input);
         }

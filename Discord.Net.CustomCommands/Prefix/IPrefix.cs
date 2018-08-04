@@ -6,5 +6,4 @@
 
         string Remove(string input);
     }
-
 }

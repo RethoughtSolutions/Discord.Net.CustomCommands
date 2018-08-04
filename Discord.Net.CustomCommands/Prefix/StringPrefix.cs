@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Discord.Net.CustomCommands.Prefix
 {
@@ -10,13 +9,13 @@ namespace Discord.Net.CustomCommands.Prefix
             Value = value;
         }
 
+        public override string Value { get; }
+
         public override bool HasPrefix(string input)
         {
             var firstWord = input.Split(' ').First();
 
             return input.Equals(firstWord);
         }
-
-        public override string Value { get; }
     }
-}                          
+}

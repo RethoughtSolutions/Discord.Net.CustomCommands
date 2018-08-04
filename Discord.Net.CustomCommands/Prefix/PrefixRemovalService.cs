@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using Optional;
+﻿using Optional;
 using Optional.Collections;
 
 namespace Discord.Net.CustomCommands.Prefix

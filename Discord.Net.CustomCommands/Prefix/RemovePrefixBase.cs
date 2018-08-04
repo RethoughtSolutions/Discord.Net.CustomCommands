@@ -4,6 +4,7 @@ namespace Discord.Net.CustomCommands.Prefix
 {
     public abstract class RemovePrefixBase : IPrefix
     {
+        public abstract string Value { get; }
         public abstract bool HasPrefix(string input);
 
         public virtual string Remove(string input)
@@ -13,7 +14,5 @@ namespace Discord.Net.CustomCommands.Prefix
                 ? throw new InvalidOperationException("Input doesn't contain prefix")
                 : input.Remove(index, Value.Length);
         }
-
-        public abstract string Value { get; }
     }
 }

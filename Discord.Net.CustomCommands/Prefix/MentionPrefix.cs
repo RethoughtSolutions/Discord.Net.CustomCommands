@@ -11,13 +11,13 @@ namespace Discord.Net.CustomCommands.Prefix
             this.user = user;
         }
 
+        public override string Value => user.Mention;
+
         public override bool HasPrefix(string input)
         {
             var firstWord = input.Split(' ').First();
 
             return MentionUtils.TryParseUser(firstWord, out var id) && id == user.Id;
         }
-
-        public override string Value => user.Mention;
     }
 }

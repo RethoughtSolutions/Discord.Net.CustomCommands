@@ -5,6 +5,6 @@ namespace Discord.Net.CustomCommands
 {
     public interface ICommand<in TContext>
     {
-        Task ExecuteAsync(TContext context, CancellationToken cancellationToken);
+        Task InvokeAsync(TContext context, CancellationToken cancellationToken);
     }
 }

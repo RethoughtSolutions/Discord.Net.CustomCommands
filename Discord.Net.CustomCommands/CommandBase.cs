@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,11 +6,16 @@ namespace Discord.Net.CustomCommands
 {
     public abstract class CommandBase<TContext> : ICommand<TContext>
     {
-        protected Func<TContext, CancellationToken, Task> CurriedFunc;
+        protected readonly Func<TContext, CancellationToken, Task> Func;
 
-        public async Task ExecuteAsync(TContext context, CancellationToken cancellationToken)
+        protected CommandBase(Func<TContext, CancellationToken, Task> func)
         {
-            await CurriedFunc.Invoke(context, cancellationToken).ConfigureAwait(false);
+            Func = func;
+        }
+
+        public async Task InvokeAsync(TContext context, CancellationToken cancellationToken)
+        {
+            await Func.Invoke(context, cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿namespace Discord.Net.CustomCommands
+﻿using Discord;
+
+namespace Rethought.Commands.Discord.Net
 {
-    // TODO Generalize Context for different Chat Applications
     public class DiscordContext
     {
         protected internal DiscordContext(IDiscordClient client, IUserMessage msg)

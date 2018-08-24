@@ -1,4 +1,6 @@
-﻿namespace Discord.Net.CustomCommands.Parser
+﻿using Discord;
+
+namespace Rethought.Commands.Discord.Net.Parser
 {
     public struct UserTypeParserInput
     {

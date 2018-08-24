@@ -1,4 +1,6 @@
-﻿namespace Discord.Net.CustomCommands
+﻿using Discord;
+
+namespace Rethought.Commands.Discord.Net
 {
     public class ContextFactory
     {

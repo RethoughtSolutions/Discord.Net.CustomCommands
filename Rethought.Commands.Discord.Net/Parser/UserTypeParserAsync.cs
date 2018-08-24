@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Discord;
 using Optional;
+using Rethought.Commands.Parser;
 
-namespace Discord.Net.CustomCommands.Parser
+namespace Rethought.Commands.Discord.Net.Parser
 {
-    public class UserAsyncTypeParser : IAsyncTypeParser<IGuildUser, UserTypeParserInput>
+    public class UserTypeParserAsync : ITypeParserAsync<UserTypeParserInput, IGuildUser>
     {
         public async Task<Option<IGuildUser>> ParseAsync(UserTypeParserInput input)
         {
